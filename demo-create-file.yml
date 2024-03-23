@@ -1,9 +1,13 @@
 ---
-- name: Cau hinh timedate
+- name: Tao file
   hosts: all
   become: yes
   become_method: sudo
   tasks:
-  - name: Cau hinh timezone Asia/Ho_Chi_Minh
-    community.general.timezone:
-      name: Asia/Ho_Chi_Minh
+  - name: Test Task
+    file:
+      path: /tmp/helloworld.txt
+      state: touch
+      owner: root
+      group: root
+      mode: 0644
