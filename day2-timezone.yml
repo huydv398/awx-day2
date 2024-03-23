@@ -5,5 +5,5 @@
   become_method: sudo
   tasks:
   - name: Cau hinh timezone Asia/Ho_Chi_Minh
-    community.general.timezone:
+    timezone:
       name: Asia/Ho_Chi_Minh
