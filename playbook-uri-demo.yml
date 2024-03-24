@@ -1,0 +1,12 @@
+---
+- name: Playbook for Web automation 
+  hosts: localhost
+  tasks:
+  - name: Check if devopsjunction.com is available and returning status 200
+    uri:
+      url: https://devopsjunction.com
+    register: result
+  
+  - name:  In tin nhan
+    debug:
+      var: result.status
