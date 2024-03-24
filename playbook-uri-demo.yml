@@ -2,7 +2,7 @@
 - name: Playbook for Web automation 
   hosts: localhost
   connection: local
-  gather_facts: no
+  #gather_facts: no
   tasks:
   - name: Check if devopsjunction.com is available and returning status 200
     uri:
