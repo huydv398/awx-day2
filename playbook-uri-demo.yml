@@ -3,6 +3,8 @@
   hosts: localhost
   connection: local
   gather_facts: no
+  collections:
+  - name: community.general
   tasks:
   - name: Check if devopsjunction.com is available and returning status 200
     uri:
