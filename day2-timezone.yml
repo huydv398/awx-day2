@@ -3,6 +3,8 @@
   hosts: all
   become: yes
   become_method: sudo
+  collections:
+  - name: community.general
   tasks:
   - name: Cau hinh timezone Asia/Ho_Chi_Minh
     community.general.timezone:
