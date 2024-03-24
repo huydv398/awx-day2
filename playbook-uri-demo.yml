@@ -2,8 +2,6 @@
 - name: Playbook for Web automation 
   hosts: localhost
   connection: local
-  become_method: su
-  become: yes
   gather_facts: no
   tasks:
   - name: Check if devopsjunction.com is available and returning status 200
