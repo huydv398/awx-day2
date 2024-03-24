@@ -3,6 +3,8 @@
   hosts: all
   become: yes
   become_method: sudo
+  collections:
+    - name: community.general  
   #collections:
   #- name: community.general
   tasks:
