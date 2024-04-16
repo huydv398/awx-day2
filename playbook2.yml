@@ -1,7 +1,7 @@
 ---
 - name: demo playbook 2
   hosts: all
-  become: yes
+  #become: yes
   tasks:
     - name: Run demo task of pinging servers.
       ping:
