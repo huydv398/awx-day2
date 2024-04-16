@@ -10,7 +10,7 @@
         host: mail.smtp2go.com
         port: 2525
         username: "{{email_user}}"
-        password: "{{emai_pass}}"
+        password: "{{email_pass}}"
         from: admin@vlphere.com
         to: tcvn1985@gmail.com
         subject: Ansible-report
