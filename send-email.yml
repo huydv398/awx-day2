@@ -1,0 +1,20 @@
+---
+- name: Tao vm - ip tren netbox
+  hosts: localhost
+  gather_facts: true
+  connection: local
+
+  tasks:
+    - name: Sending an e-mail html fomat
+      community.general.mail:
+        host: mail.smtp2go.com
+        port: 2525
+        username: "{{email_user}}"
+        password: "{{emai_pass}}"
+        from: admin@vlphere.com
+        to: tcvn1985@gmail.com
+        subject: Ansible-report
+        subtype: html
+        body: "{{ lookup('file', 'report.html') }}"
+        # body: System {{ ansible_hostname }} has been successfully provisioned.
+      delegate_to: localhost
