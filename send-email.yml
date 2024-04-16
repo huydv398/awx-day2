@@ -9,8 +9,8 @@
       community.general.mail:
         host: mail.smtp2go.com
         port: 2525
-        username: "{{email_user}}"
-        password: "{{email_pass}}"
+        username: "{{email_basic_username}}"
+        password: "{{email_basic_password}}"
         from: admin@vlphere.com
         to: tcvn1985@gmail.com
         subject: Ansible-report
