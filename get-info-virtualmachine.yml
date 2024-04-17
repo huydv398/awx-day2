@@ -1,14 +1,17 @@
 ---
-- name: get specific facts from vmware 
+- name: get specific facts from vm
   hosts: localhost
   connection: local
   tasks:
     - name: Gather information about all datacenters
-      community.vmware.vmware_datacenter_info:
+      community.vmware.vmware_guest:
         hostname: '{{ lookup("env", "VMWARE_HOST") }}'
         username: '{{ lookup("env", "VMWARE_USER") }}'
         password: '{{ lookup("env", "VMWARE_PASSWORD") }}'
         validate_certs: no
+        datacenter: HCD-DC01
+        folder: /
+        name: my-vm         
       register: facts
       delegate_to: localhost
 
