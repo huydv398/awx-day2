@@ -9,9 +9,9 @@
         username: '{{ lookup("env", "VMWARE_USER") }}'
         password: '{{ lookup("env", "VMWARE_PASSWORD") }}'
         validate_certs: no
-        datacenter: HCD-DC01
+        datacenter: DC-Labhtv
         folder: /
-        name: my-vm         
+        name: htvlab-jump         
       register: facts
       delegate_to: localhost
 
