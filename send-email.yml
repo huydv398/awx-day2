@@ -13,7 +13,7 @@
         password: "{{email_basic_password}}"
         from: admin@vlphere.com
         to: tcvn1985@gmail.com
-        subject: Ansible-report "{{ ansible_date_time.iso8601 }}"
+        subject: Ansible-report "{{ ansible_date_time.date}}" tuan thu {{ansible_date_time.weeknumber}}
         subtype: html
         body: "{{ lookup('file', 'report.html') }}"
         # body: System {{ ansible_hostname }} has been successfully provisioned.
