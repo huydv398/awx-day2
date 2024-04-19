@@ -1,0 +1,31 @@
+- name: Prechecks Before Patching
+  hosts: all
+  become: true
+  gather_facts: yes
+  ignore_errors: no
+  tasks:
+    - name: "Host Name"
+      debug:
+        msg:
+          - Node_Details: "{{ ansible_nodename }}"
+    - name: "Network Details"
+      debug:
+        msg:
+        - Hostname: "{{ ansible_hostname }}"
+        - IPv4_Info: "{{ ansible_ens160.ipv4 }}"
+        - IPv6_Info: "{{ ansible_ens160.ipv6 }}"
+        - MAC_Address: "{{ ansible_ens160.macaddress }}"
+        - FQDN: "{{ ansible_fqdn }}"
+
+    - name: "OS Details"
+      debug:
+        msg:
+        - Distribution: "{{ ansible_distribution }}"
+        - OS_Family: "{{ ansible_os_family }}"
+        - Dist_Version: "{{ ansible_distribution_major_version }}"
+        - Kernel: "{{ ansible_kernel }}"
+        - Kernel_Version: "{{ ansible_kernel_version }}"
+        - Architecture: "{{ansible_architecture}}"
+        - BIOS_Date: "{{ansible_bios_date}}"
+        - BIOS_Version: "{{ansible_bios_version}}"
+        - BOOT_Image: "{{ansible_cmdline.BOOT_IMAGE}}"
