@@ -4,15 +4,25 @@
   connection: local
   gather_facts: no
   vars:
-    netbox_url: https://nb.suncloud.vn
-    netbox_token: 71ecf6edf44b57d84ac56462f784577dab6912f0
+    netbox_url: http://172.16.66.124:8000
+    netbox_token: 886ae40c1e5c26dab590a26ee065a60f9e650019
     validate_certs: no
   
-  tasks:
-    - name: "TASK 1: GET SITES WITH NB_QUERY"
-      set_fact:
-        sites: "{{ query('netbox.netbox.nb_lookup', 'sites', api_endpoint=netbox_url, token=netbox_token,validate_certs=false) }}"
+  tasks:  
+  - name: test
+    debug:
+      msg: "{{ netbox_url }}"
+  - name: "TASK 1: GET SITES WITH NB_QUERY"
+    set_fact:
+      sites: "{{ query('netbox.netbox.nb_lookup', 'sites', api_endpoint=netbox_url, token=netbox_token) }}"
 
-    - name: "TASK 2: PRINT JUST THE SITE NAMES"
-      debug:
-        msg: "{{ sites | json_query('[*].value.name') }}"
+  - name: "TASK 2: PRINT JUST THE SITE NAMES"
+    debug:
+      msg: "{{ sites | json_query('[*].value.name') }}"
+  - name: "TASK 3: GET DEVICES WITH ROLE ROUTER AT DEN SITE"
+    set_fact:
+      den_devices: "{{ query('netbox.netbox.nb_lookup', 'devices', api_filter='site=VPCT role=router', api_endpoint=netbox_url, token=netbox_token) }}"
+
+  - name: "TASK 4: PRINT THE DEVICES"
+    debug:
+      msg: "{{ den_devices | json_query('[*].value.name') }}"
