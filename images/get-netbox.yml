@@ -12,3 +12,14 @@
   - name: test
     debug:
       msg: "{{ netbox_url }}"
+
+  - name: "TASK 1: GET SITES WITH NB_QUERY"
+    set_fact:
+      sites: "{{ query('netbox.netbox.nb_lookup', 'sites', api_endpoint=netbox_url, token=netbox_token) }}"
+
+  - name: "TASK 2: PRINT JUST THE SITE NAMES"
+    debug:
+      msg: "{{ sites | json_query('[*].value.name') }}"
+  - name: "TASK 4: PRINT THE DEVICES"
+    debug:
+      msg: "{{ den_devices | json_query('[*].value.name') }}"
