@@ -20,6 +20,3 @@
   - name: "TASK 2: PRINT JUST THE SITE NAMES"
     debug:
       msg: "{{ sites | json_query('[*].value.name') }}"
-  - name: "TASK 4: PRINT THE DEVICES"
-    debug:
-      msg: "{{ den_devices | json_query('[*].value.name') }}"
