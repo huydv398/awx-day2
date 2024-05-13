@@ -11,7 +11,7 @@
   tasks:
     - name: "TASK 1: GET IP  WITH NB_QUERY"
       set_fact:
-        ipadd: "{{ query('netbox.netbox.nb_lookup',  'ip-addresses',api_filter='address=192.168.100.3', api_endpoint=netbox_url, token=netbox_token,validate_certs=false) }}"
+        ipadd: "{{ query('netbox.netbox.nb_lookup',  'ip-addresses',api_filter='address=192.168.100.2', api_endpoint=netbox_url, token=netbox_token,validate_certs=false) }}"
 
     - name: "TASK 2: PRINT JUST THE ipadd info"
       debug:
