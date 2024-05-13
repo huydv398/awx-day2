@@ -1,0 +1,18 @@
+---
+- name: "GATHER DATA FROM NETBOX"
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    netbox_url: http://172.16.66.124:8000
+    netbox_token: 886ae40c1e5c26dab590a26ee065a60f9e650019
+    validate_certs: no
+  
+  tasks:
+    - name: "TASK 1: GET IP  WITH NB_QUERY"
+      set_fact:
+        ipadd: "{{ query('netbox.netbox.nb_lookup',  'ip-addresses',api_filter='address=10.10.240.245', api_endpoint=netbox_url, token=netbox_token,validate_certs=false) }}"
+
+    - name: "TASK 2: PRINT JUST THE ipadd info"
+      debug:
+        msg: "{{ ipadd[0].value.assigned_object_id }} - {{ ipadd[0].value.address }}"
